@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css">
+</head>
+
+<body>
+  <div id="app">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Photo Capture from MediaDevices.getUserMedia </span>
+          <div class="mdl-layout-spacer"></div>
+      </div>
+    </header>
+    <main class="mdl-layout__content mat-typography">
+      <div id="create-post">
+        <video id="player" ref="videoPlayer" autoplay></video>
+        <canvas id="canvas" ref="canvasElement" width="320px" height="240px"></canvas>
+        <!--<button class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-button&#45;&#45;colored" @click="startVideo"
+                ref="initBtn" id="initialize-btn">Initialize Camera
+        </button>-->
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" @click="captureImage"
+                ref="captureBtn" id="capture-btn">Capture
+        </button>
+        <div id="pick-image" ref="imagePickerArea">
+          <h6>Pick an Image instead</h6>
+          <input type="file" ref="imagePicker" accept="image/*" id="image-picker">
+        </div>
+        <form>
+          <div class="input-section mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" v-model="position.latitude" id="lat">
+            <label class="mdl-textfield__label" for="lat" name="title">Lat</label>
+          </div>
+          <div class="input-section mdl-textfield mdl-js-textfield" id="manual-location">
+            <input class="mdl-textfield__input" type="text" v-model="position.longitude" id="lng">
+            <label class="mdl-textfield__label" for="lng" name="location">Lng</label>
+          </div>
+          <div class="input-section">
+            <button class="mdl-button mdl-js-button mdl-button mdl-button--colored" type="button" @click="getLocation"
+                    ref="locationBtn" id="location-btn">Get Location
+            </button>
+            <div class="mdl-spinner mdl-js-spinner is-active" ref="locationLoader" id="location-loader"></div>
+          </div>
+          <br>
+          <div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent"
+                    type="submit" id="post-btn">Post!
+            </button>
+          </div>
+          <br>
+          <div>
+            <button class="mdl-button mdl-js-button mdl-button--fab" id="close-btn" type="button">
+              <i class="material-icons">close</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+  </div>
+
+   <script src="https://unpkg.com/vue"></script>
+   <script src="./main.js"></script>
+</body>
+
+</html>
